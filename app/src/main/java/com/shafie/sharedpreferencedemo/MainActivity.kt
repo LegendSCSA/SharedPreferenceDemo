@@ -16,7 +16,13 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.readDataBtn.isEnabled = false
+        var savedData = loadPreference()
+        if (savedData != "") {
+            binding.readDataEditText.setText(savedData)
+        }
+        else{
+            binding.readDataBtn.isEnabled = false
+        }
 
         binding.saveDataBtn.setOnClickListener {
             val text = binding.saveDataEditText.text.toString()
